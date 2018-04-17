@@ -12,11 +12,11 @@ let fetchNotes = () => {
 };
 
 let saveNotes = (notes) => {
-
+  fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 };
 
 let addNote = (title, body) => {
-  let notes = [];
+  let notes = fetchNotes();
   let note = {
     title,
     body
@@ -26,7 +26,7 @@ let addNote = (title, body) => {
 
   if (duplicateNotes.length === 0) {
     notes.push(note);
-    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    saveNotes(notes);
   }
 };
 
