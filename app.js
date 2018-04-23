@@ -20,7 +20,9 @@ if (command === 'add') {
     console.log('Note title already in use!');
   }
 } else if (command === 'list') {
-  notes.getAll();
+  let allNotes = notes.getAll();
+  console.log(`Printing ${allNotes.length} note(s).`);
+  allNotes.forEach((note) => notes.logNote(note));
 } else if (command === 'read') {
   let note = notes.getNote(argv.title);
   if (note) {
